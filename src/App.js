@@ -13,18 +13,18 @@ function App() {
   useEffect(() => {
     if(search){
       const fetchData = async () => {
-      document.title = `${search} Music`
-      const response = await fetch(API_URL + search)
-      const resData = await response.json()
-      if (resData.results.length > 0) {
-        setData(resData.results)
+            document.title = `${search} Music`
+            const response = await fetch(API_URL+search)
+            const resData = await response.json()
+            if (resData.results.length > 0) {
+                setData(resData.results)
+            }
+            else {
+              setMessage('Not Found')
+            }
       }
-      else {
-        setMessage('Not Found')
-      }
+      fetchData()
     }
-    fetchData()
-  }
 }, [search])
 
   const handleSearch = (e, term) => {
